@@ -81,7 +81,7 @@ void publish_scan(ros::Publisher *pub,
 
     scan_msg.scan_time = scan_time;
     scan_msg.time_increment = scan_time / (double)(node_count-1);
-    scan_msg.range_min = 0.15;
+    scan_msg.range_min = 0.4;
     scan_msg.range_max = max_distance;//8.0;
 
     scan_msg.intensities.resize(node_count);
@@ -239,7 +239,7 @@ int main(int argc, char * argv[]) {
     float max_distance;
     double scan_frequency;
     ros::NodeHandle nh;
-    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan", 1000);
+    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("scan_multi", 1000);
     ros::NodeHandle nh_private("~");
     nh_private.param<std::string>("channel_type", channel_type, "serial");
     nh_private.param<std::string>("tcp_ip", tcp_ip, "192.168.0.7"); 
